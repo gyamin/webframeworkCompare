@@ -1,0 +1,9 @@
+version: "3"
+services:
+  load-test-mysql:
+    container_name: load-test-mysql
+    build: ./mysql
+    volumes:
+      - ./mysql/volume:/var/lib/mysql
+    ports:
+      - 33061:3306
