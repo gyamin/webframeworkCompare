@@ -9,7 +9,7 @@ class PostalCode {
     }
 
     async selectPostalInfoByCity() {
-        await this.sleep(2000);
+        // await this.sleep(2000);
 
         const con = connection
         // const sql = "select postal_code, address_1, address_2, address_3 from postal_code where address_2 like '%大津%';"

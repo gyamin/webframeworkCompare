@@ -8,7 +8,8 @@ app.get('/', (req, res) => {
 })
 
 app.get('/postal-code1', (req, res) => {
-    console.log(Date.now().toString())
+    let start = Date.now()
+    console.log("start:" + start.toString())
     const postalCode = new _postalCode()
     postalCode.selectPostalInfoByCity().then((result) => {
         let total = 0
@@ -17,7 +18,9 @@ app.get('/postal-code1', (req, res) => {
             total = total + buff.length
         })
         res.send({"total": total})
-        console.log(Date.now().toString())
+        let end= Date.now()
+        console.log("end:" + end.toString())
+        console.log("time:" + (end - start))
     })
 })
 
