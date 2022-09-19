@@ -7,3 +7,46 @@ services:
       - ./mysql/volume:/var/lib/mysql
     ports:
       - 33061:3306
+    networks:
+      - load-test
+
+  load-test-php:
+    container_name: load-test-php
+    build:
+      context: ../
+      dockerfile: ./docker/php-fpm/Dockerfile
+    volumes:
+      - ../laravel:/var/www/laravel
+    networks:
+      - load-test
+
+  load-test-nginx:
+    container_name: load-test-nginx
+    build:
+      context: ../
+      dockerfile: ./docker/nginx/Dockerfile
+    volumes:
+      - ../laravel:/var/www/laravel
+    depends_on:
+      - load-test-php
+    ports:
+      - 8081:80
+    networks:
+      - load-test
+
+  load-test-node:
+    container_name: load-test-node
+    build:
+      context: ../
+      dockerfile: ./docker/node/Dockerfile
+    volumes:
+      - ../express/app:/app
+    depends_on:
+      - load-test-mysql
+    ports:
+      - 3000:3000
+    networks:
+      - load-test
+
+networks:
+  load-test:
