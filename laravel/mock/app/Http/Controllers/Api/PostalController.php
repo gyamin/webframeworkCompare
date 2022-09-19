@@ -13,7 +13,7 @@ class PostalController extends Controller
         $start = hrtime(true);
         Log::debug('start:' . $start);
 
-        $cities = ["大阪府", "東京都", "京都府", "愛知県", "島根県"];
+        $cities = ["北海道", "青森県", "岩手県", "秋田県", "宮城県", "山形県", "大阪府", "東京都", "京都府", "愛知県", "島根県"];
         $results = [];
         foreach ($cities as $name) {
             $tmp = DB::table('postal_code')
@@ -25,8 +25,7 @@ class PostalController extends Controller
 
         $total = ['total' => 0];
         foreach ($results as $elem) {
-            $buff = $elem->address_1 . $elem->address_2 . $elem->address_3;
-            $total['total'] = $total['total'] + mb_strlen($buff);
+            $total['total'] = $total['total'] + (int)$elem->postal_code;
         }
 
         $end = hrtime(true);

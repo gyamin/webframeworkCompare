@@ -11,7 +11,7 @@ class PostalCode {
     async selectPostalInfoByCity() {
 
         // await this.sleep(2000);
-        let cities = ["大阪府", "東京都", "京都府", "愛知県", "島根県"]
+        let cities = ["北海道", "青森県", "岩手県", "秋田県", "宮城県", "山形県", "大阪府", "東京都", "京都府", "愛知県", "島根県"]
 
         const con = connection
         let results = []

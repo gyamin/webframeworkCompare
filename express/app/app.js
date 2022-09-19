@@ -16,8 +16,7 @@ app.get('/postal-code', (req, res) => {
 
         let total = 0
         result.forEach((elem) => {
-            let buff = elem["address_1"] + elem["address_2"] + elem["address_3"]
-            total = total + buff.length
+            total = total + parseInt(elem['postal_code'],10);
         })
         res.send({"total": total})
 
