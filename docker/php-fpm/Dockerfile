@@ -9,3 +9,4 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # docker-composeでcontext指定をしているので、プロジェクトルートディレクトリからのパスで指定
 COPY ./docker/php-fpm/php.ini /usr/local/etc/php/php.ini
+COPY ./docker/php-fpm/www.conf /usr/local/etc/php-fpm.d/www.conf
